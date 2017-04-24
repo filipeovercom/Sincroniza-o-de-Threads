@@ -1,0 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.com.catolica.problemasincronizacao;
+
+/**
+ *
+ * @author FC20120897
+ */
+public class Consumidor extends Thread {
+
+    private final Repositorio repositorio;
+
+    public Consumidor(Repositorio repositorio) {
+        this.repositorio = repositorio;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            Integer num = repositorio.get();
+            System.out.println("Consumidor " + getId() + " pegou: " + num);
+        }
+    }
+}
